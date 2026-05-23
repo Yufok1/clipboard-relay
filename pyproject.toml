@@ -1,0 +1,100 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "clipboard-relay"
+version = "0.2.0"
+description = "Consent-gated, operator-driven clipboard bridge between AI sessions. Includes versioned clipboard history daemon: every copy timestamped and queryable by both operator and AI."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [
+    { name = "Yufok1" },
+]
+keywords = [
+    "clipboard",
+    "ai-tooling",
+    "agent",
+    "mcp",
+    "handoff",
+    "brotology",
+    "ouroboros",
+    "human-in-the-loop",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Security",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "build>=1.2",
+    "mypy>=1.8",
+    "pytest>=8.0",
+    "ruff>=0.5",
+    "twine>=5.0",
+]
+provenance = [
+    "cascade-lattice>=0.8.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/Yufok1/clipboard-relay"
+Repository = "https://github.com/Yufok1/clipboard-relay"
+Doctrine = "https://github.com/Yufok1/Brotology-field-guide"
+Changelog = "https://github.com/Yufok1/clipboard-relay/blob/main/CHANGELOG.md"
+Security = "https://github.com/Yufok1/clipboard-relay/blob/main/SECURITY.md"
+
+[project.scripts]
+clipboard-relay = "clipboard_relay.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/clipboard_relay"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/docs",
+    "/tests",
+    "/CHANGELOG.md",
+    "/CODE_OF_CONDUCT.md",
+    "/CONTRIBUTING.md",
+    "/README.md",
+    "/LICENSE",
+    "/SECURITY.md",
+    "/pyproject.toml",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "S", "RUF", "PL", "PTH", "SIM"]
+ignore = ["S603", "S607"]  # subprocess calls are intentional and bounded
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unreachable = true
+files = ["src/clipboard_relay"]

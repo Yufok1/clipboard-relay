@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtual envs
+.venv/
+venv/
+
+# Test / type
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Sigstore / SBOM
+*.sigstore
+*.sigstore.json
+*.cdx.json
