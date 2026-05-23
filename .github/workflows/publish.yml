@@ -15,7 +15,7 @@ permissions:
 jobs:
   build:
     name: Build and verify distributions
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
 
@@ -65,7 +65,7 @@ jobs:
   publish:
     name: Publish with PyPI Trusted Publishing
     needs: build
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     environment:
       name: pypi
       url: https://pypi.org/project/clipboard-relay/
